@@ -1,0 +1,80 @@
+.card{
+    width:350px;
+    height:500px;
+    /*Glassmorphism 핵심*/
+    background: rgba( 255, 255, 255, 0.30 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    overflow:hidden;
+}
+
+/* Background-class : class="d:flex px:12 r:10 bd:blur(30) b:1;solid;white/.1 bg:black/.3 blend:hard-light" */
+.glassmorphism-container{
+    /*display: flex;*/
+    padding: 12px;
+    border-radius: 10px;
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0,0,0,0.3);
+    mix-blend-mode: hard-light;
+}
+
+.glassmorphism-inside{
+    background-color: rgba(0,0,0,0.3);
+}
+
+.glassmorphism{
+    background-color: rgba(0,0,0,0.3);
+}
+
+
+.glassmorphism-container>*{
+    /* class로 style 지정하면 상속이 안되어 배경 style을 상속시킴 */
+    background-color: transparent;
+}
+
+/* glassmorphism 도형에 추가 음영 주기 */
+/* 없는게 낫다는 듯 - 흰색 계열이면 조금 더 나을 것 같기도... */
+.emphasize{
+    border: none;
+
+    /*border-left: 1px solid rgba(255,255,255,0.3);
+    border-top: 1px solid rgba(255,255,255,0.3);*/
+    border-left: 1px solid rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(0,0,0,0.3);
+    box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+.emphasize:hover{
+    box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);   /* 그림자가 더 넓어져서 강조가 되는데 glassmorphism 배경에는 잘 안보인다. 흰색 배경에는 효과적 */
+}
+
+.emphasize:active{
+    background: rgba(255,255,255,0.2);
+}
+
+/* class로 style 지정하면 상속이 안되는 듯 */
+
+/*
+
+if ( inside : class="d:flex px:12 r:10 bd:blur(30) b:1;solid;white/.1 bg:black/.3 blend:hard-light")
+    // option 1
+        class="
+                bg:white/.15.active bg:white/.15:hover:not(.active) ls:1
+                p:15 font:14 font:semibold
+                font:gray-40 font:white:is(.active,:hover)
+        "
+    
+else
+    // option 2
+        class="
+                        bg:black/.3 bg:black/.15:hover ls:2
+                        p:15 b:1;solid;white/.1 r:10 
+                        inline-block font:semibold bd:blur(30)
+                        font:14
+                "
+
+
+*/

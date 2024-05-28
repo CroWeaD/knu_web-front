@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./chat.css">
+</head>
+<body>
+    <div class="app">
+        <div class="screen join-screen">
+            <div class="form bg:black/.3 b:1;solid;white/.1 bd:blur(30) blend:hard-light p:10 r:10">
+                <h2 class="font:white">Join Chatroom</h2>
+                <div class="form-input">
+                    <label class="font:white">Username</label>
+                    <input type="text" id="username" class="
+                        bg:black/.3 bg:white/.15.active bg:white/.15:hover:not(.active) bg:white/.15:focus:not(.active) ls:1
+                        p:15 font:14 font:semibold r:10
+                        font:gray-40 font:white:is(.active,:hover) font:white:focus
+                    ">
+                </div>
+                <div class="form-input">
+                    <button id="join-user" class="
+                        bg:black/.3 bg:white/.15.active bg:white/.15:hover:not(.active) ls:1
+                        p:15 font:semibold r:10
+                        font:gray-40 font:white:is(.active,:hover) font:white:focus
+                    ">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="screen chat-screen active bg:black/.3 b:1;solid;white/.1 bd:blur(30) blend:hard-light r:10">
+            <div class="header">
+                <div class="logo">Chatroom</div>
+                <button id="exit-chat">Exit</button>
+            </div>
+            <div class="messages">
+                
+            </div>
+            <div class="typebox">
+                <input type="text" id="message-input">
+                <button id="send-message" class="
+                    bg:black/.3 bg:white/.15.active bg:white/.15:hover:not(.active) ls:1
+                    rbr:10
+                    font:gray-30 font:white:is(.active,:hover)
+                ">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+
+    <div id="custom-cursor"></div>
+
+    <script src="./glassmorphism.js"></script>
+
+    <script src="./chat.js"></script>
+
+</body>
+</html>

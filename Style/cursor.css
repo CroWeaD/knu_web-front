@@ -1,0 +1,25 @@
+#custom-cursor{
+    border-radius: 50%;
+    pointer-events: none;
+    top: 0;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    position: fixed;
+    aspect-ratio: 1;
+    z-index: 100;
+    width: 50px;
+    cursor: none;
+    /*mix-blend-mode: difference;*/ /*배경색과 혼합 - 커서가 잘 안보여서 일단 제거*/
+}
+
+#custom-cursor::after{
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    top: 23px;
+    left: 23px;
+    border: 2px solid rgba(101, 20, 247, 0.35);  /*#6528f7*/
+}

@@ -1,0 +1,124 @@
+/*$white: rgba(255,255,255,0.3);*/
+/*
+body {
+  background: linear-gradient(45deg, #FC466B, #3F5EFB);
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+*/
+#container {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+
+form {
+    height: 440px;
+    text-align: center;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+form p {
+    opacity: 0.7;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-size: 1.6rem;
+}
+  
+form a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 12px;
+} 
+
+form a:hover{
+    text-shadow: 2px 2px 6px #00000040;
+}
+
+form a:active {
+    text-shadow: none;
+}
+
+form input {
+    width: 200px;
+    margin-bottom: 2em;
+    border-radius: 10px;
+    font-family: Montserrat, sans-serif;
+    transition: all 0.2s ease-in-out;
+    /* text-shadow가 없는 쪽이 더 깔끔한 듯 */
+    /*text-shadow: 2px 2px 4px rgba(0,0,0,0.4);*/
+}
+
+form input[type="email"]:focus, input[type="password"]:focus{
+    box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
+    color: white;
+}
+
+form input[type="button"]{
+    margin-top: 10px;
+    width: 150px;
+}
+
+form:hover {
+    margin: 10px;
+}
+
+::placeholder {
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    color: #fff;
+    /*text-shadow: 2px 2px 4px rgba(0,0,0,0.4);*/
+}
+
+.drop {
+    position: absolute;
+    transition: all 0.2s ease;
+}
+
+.drop-1{
+    height: 160px;
+    width: 160px;
+    top: -30px;
+    left: -36px;
+    z-index: -1;
+}
+
+.drop-2{
+    height: 170px;
+    width: 170px;
+    bottom: -30px;
+    right: -40px;
+}
+
+.drop-3{
+    height: 200px;
+    width: 200px;
+    bottom: 120px;
+    right: -80px;
+    z-index: -1;
+}
+
+.drop-4{
+    height: 200px;
+    width: 200px;
+    top: -40px;
+    right: -30px;
+}
+
+.drop-5{
+    height: 100px;
+    width: 100px;
+    bottom: 170px;
+    left: 10px;
+    z-index: -1;
+}
+
+a,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}

@@ -1,0 +1,82 @@
+/* Font */
+
+*::-webkit-scrollbar{
+    display:none;
+}
+
+.container{
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+body{
+    border: 1px solid black;/*purple;*/
+    cursor: none;
+    text-align: center;
+}
+
+body:hover{
+    opacity: 1;
+}
+
+section{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+}
+
+.two{
+    background-color: #6528f7;
+}
+
+.one h1{
+    font-size: 8em;
+}
+
+#scroll{
+    display: flex;
+    flex-direction: column;
+    transform: translateY(35vh);
+    position: relative;
+    animation: motion 0.8s linear 0s infinite alternate; 
+}
+
+@keyframes motion {
+	0% {transform: translateY(40vh);}
+	100% {transform: translateY(38vh);}
+}
+/*
+#scroll p{
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    opacity: 1;
+    visibility: inherit;
+}*/
+
+.arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.down{
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.three{
+    background-color: #a076f9;
+}
+
+.four{
+    background-color: white;
+}
+
+/*.four{
+    background-color: antiquewhite;
+}*/
