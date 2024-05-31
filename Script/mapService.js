@@ -12,7 +12,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 지도 중심좌표 : map.getCenter() 
 
 var imageSrc = './media/location-dot-solid.svg', // 마커이미지의 주소입니다    
-    imageSize = new kakao.maps.Size(50, 55) // 마커이미지의 크기입니다
+    imageSize = new kakao.maps.Size(50, 55), // 마커이미지의 크기입니다
     imageOption = {offset: new kakao.maps.Point(25, 55)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 
@@ -128,30 +128,6 @@ function displayPlaces(places) {
     map.setBounds(bounds);
 }
 
-// 검색결과 항목을 Element로 반환하는 함수입니다
-function getListItem(index, places) {
-
-    var el = document.createElement('li'),
-    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info">' +
-                '   <h5>' + places.place_name + '</h5>';
-
-    if (places.road_address_name) {
-        itemStr += '    <span>' + places.road_address_name + '</span>' +
-                    '   <span class="jibun gray">' +  places.address_name  + '</span>';
-    } else {
-        itemStr += '    <span>' +  places.address_name  + '</span>'; 
-    }
-                 
-      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                '</div>';           
-
-    el.innerHTML = itemStr;
-    el.className = 'item';
-
-    return el;
-}
-
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, idx, title) {
     var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
@@ -181,46 +157,6 @@ function removeMarker() {
     markers = [];
 }
 
-// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-function displayPagination(pagination) {
-    var paginationEl = document.getElementById('pagination'),
-        fragment = document.createDocumentFragment(),
-        i; 
-
-    // 기존에 추가된 페이지번호를 삭제합니다
-    while (paginationEl.hasChildNodes()) {
-        paginationEl.removeChild (paginationEl.lastChild);
-    }
-
-    for (i=1; i<=pagination.last; i++) {
-        var el = document.createElement('a');
-        el.href = "#";
-        el.innerHTML = i;
-
-        if (i===pagination.current) {
-            el.className = 'on';
-        } else {
-            el.onclick = (function(i) {
-                return function() {
-                    pagination.gotoPage(i);
-                }
-            })(i);
-        }
-
-        fragment.appendChild(el);
-    }
-    paginationEl.appendChild(fragment);
-}
-
-// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
-// 인포윈도우에 장소명을 표시합니다
-function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-
-    infowindow.setContent(content);
-    infowindow.open(map, marker);
-}
-
  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
 function removeAllChildNods(el) {   
     while (el.hasChildNodes()) {
@@ -231,25 +167,6 @@ function removeAllChildNods(el) {
 // 커스텀 오버레이에 표시할 컨텐츠 입니다
 // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
 // 별도의 이벤트 메소드를 제공하지 않습니다 
-var content = '<div id="wrap" style="z-index: 99" class="bg:black/.3 bg:black/.15:hover p:10 b:1;solid;white/.1 r:10 inline-block font:semibold bd:blur(30) font:14 width:288">' + 
-            '    <div id="info">' + 
-            '        <div id="title">' + 
-            '            Test Title' + 
-            '            <div id="close" onclick="closeOverlay()" title="닫기">X</div>' + 
-            '        </div>' + 
-            '        <div id="body">' + 
-            '            <div id="img">' +
-            '           </div>' + 
-            '            <div id="desc">' + 
-            '                <div id="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
-            '                <div id="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
-            '            </div>' + 
-            '        </div>' + 
-            '    </div>' +    
-            '</div>';
-
-
 var content =   `<div id="wrap" class="abs inset:0 h:fit m:auto font:white rel d:flex flex:col max-width:500 w:500 p:10 gap:10" style="z-index: 10">
                     <div class="d:flex p:10 r:10 bg:black/.3 p:10 b:1;solid;white/.1 bd:blur(30)">
                         <img class="aspect:1/1 w:150 r:5 object:cover"
@@ -281,7 +198,7 @@ var content =   `<div id="wrap" class="abs inset:0 h:fit m:auto font:white rel d
                 </div>`
 
 function getMarkers(){
-    
+    open('post', '/meetings/find/')
 }
 
 function makeOverlay(latlng){
@@ -387,8 +304,4 @@ function zoomIn() {
 // 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
 function zoomOut() {
     map.setLevel(map.getLevel() + 1);
-}
-
-function menu(){
-
 }
